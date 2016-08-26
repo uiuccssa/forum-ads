@@ -1,0 +1,49 @@
+<!-- 模块的html部分 -->
+<div id="myCarousel" class="carousel"  data-ride="carousel" style="align:center">
+  <div class="carousel-inner">
+  </div>
+</div>
+
+<!-- 模块的dynamic部分。所有广告都是dynamically添加 -->
+<script type="application/javascript">
+    
+    /** KEY
+    * -1 HOME
+    * 11 NEW
+    * 8 SALE
+    * 7 CAR
+    * 6 HOUSE
+    * 12 OTHER
+    */
+    // 所有图片host在官方imgur上：http://imgur.com/a/4vVdN
+    var ads = {
+        "-1": ["http://i.imgur.com/aKdyb1X.png","http://i.imgur.com/GHjZCoE.gif","http://i.imgur.com/eOm8tq1.gif","http://i.imgur.com/eO7uoyp.jpg","http://i.imgur.com/medRgqf.gif","http://i.imgur.com/mlAPi23.png"],
+        "11":["http://i.imgur.com/GdkuRjG.jpg","http://i.imgur.com/m3B4z0g.jpg"],
+        "8":["http://i.imgur.com/GdkuRjG.jpg","blob:http://imgur.com/d9128523-a402-4ecb-8821-95f55676007d","http://i.imgur.com/I5v11cg.png"],
+        "7":["http://i.imgur.com/aKdyb1X.png","http://i.imgur.com/eO7uoyp.jpg"],
+        "6":["http://i.imgur.com/lmeiQno.jpg","http://i.imgur.com/8oJfROp.gif","http://i.imgur.com/i4fRG5X.gif","http://i.imgur.com/2A7Gxl8.jpg","http://i.imgur.com/PXD8IjI.jpg"],
+        "12":["http://i.imgur.com/rJSIlo8.gif","http://i.imgur.com/4AftES3.gif"]
+    }
+    
+    // func：根据所在的板块，在html模块里添加该页的广告
+    function addAd(d){
+        ads[d].forEach(function(e,i){
+            var $cellElems = $("<div class='item'><img src='"+ads[d][i]+"'></div>");
+            
+            $('.carousel-inner').append($cellElems)
+        })
+    }
+    
+    // 根据该页url提取所在的板块
+    var d = ajaxify.currentPage.substring(9, 11).replace(/\D/g,'');
+    if( !(d in ads) ) d = -1;
+
+    // 根据板块id呼叫func
+    addAd(d);
+    
+    // initialize carousel模块
+    $('.carousel').carousel({
+      interval:5000
+    })
+    
+</script>
