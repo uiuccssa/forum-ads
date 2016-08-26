@@ -1,13 +1,16 @@
 # forum-ads
 论坛使用的广告模块
 
+快速维护：[JSFiddle](https://jsfiddle.net/xftxs5zz/1/)
+
+注意模块load需要5秒左右
+
 ### 安装说明
 ##### 安装jQuery
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 ```
 由于NodeBB自带jQuery所以不用在NodeBB中安装
-
 ##### 安装bootstrap carousel JS
 ~~~
 <script src="https://bootstrapdocs.com/v2.0.3/docs/assets/js/bootstrap-carousel.js"></script>
@@ -27,7 +30,7 @@
 
 **所有value必须是array**
 
-##### KEY
+#### KEY
 ~~~
 -1 HOME
 11 NEW
